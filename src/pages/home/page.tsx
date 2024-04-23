@@ -31,7 +31,7 @@ export function Home() {
                 </Link>
               </Button>
 
-              <Button size={'sm'} variant={'outline'} className="gap-2 text-xs">
+              <Button size={'sm'} variant={'shimmer'} className="gap-2 text-xs">
                 <Github size={18} /> 227
               </Button>
             </motion.div>
