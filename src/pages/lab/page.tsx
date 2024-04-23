@@ -1,3 +1,6 @@
+import { Undo2 } from 'lucide-react'
+import { Link } from 'react-router-dom'
+
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -17,9 +20,24 @@ import {
 } from '@/components/ui/tabs'
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
 
+// Button code
+;<button className="animate-shimmer inline-flex h-12 items-center justify-center rounded-md border border-border bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+  Shimmer
+</button>
+
 export function Lab() {
   return (
     <div className="container space-y-8">
+      <Button
+        variant="shimmer"
+        className="absolute left-2 top-2 gap-2 border-none"
+        asChild
+      >
+        <Link to="/">
+          <Undo2 size={18} /> to home
+        </Link>
+      </Button>
+
       <TextGenerateEffect
         words="Sirius/Lab"
         className="text-center font-code text-5xl"

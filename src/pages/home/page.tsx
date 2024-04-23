@@ -25,8 +25,10 @@ export function Home() {
               animate={{ opacity: [0, 1], y: [10, 0] }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              <Button size={'sm'} className="text-xs">
-                Get Started
+              <Button size={'sm'} asChild>
+                <Link to="/labs" className="text-xs">
+                  Get Started
+                </Link>
               </Button>
 
               <Button size={'sm'} variant={'outline'} className="gap-2 text-xs">
