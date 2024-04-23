@@ -166,31 +166,46 @@ const MotionTabsContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => {
   const { value } = React.useContext(TabsContext)
 
-  const isActive = value.currentValue === props.value
-
-  const x = 50
-
   const isHigherThen =
     value.values.indexOf(value.currentValue) >
     value.values.indexOf(value.prevValue as string)
-      ? [-x, 0]
-      : [x, 0]
+
+  const variants = {
+    from: {
+      x: isHigherThen ? '200px' : '-200px',
+      opacity: 0,
+    },
+    to: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 0.2 },
+    },
+    exitLeft: {
+      x: '-200px',
+      opacity: 0,
+      transition: { duration: 0.2 },
+    },
+    exitRight: {
+      x: '200px',
+      opacity: 0,
+      transition: { duration: 0.2 },
+    },
+  }
 
   return (
     <TabsPrimitive.Content
       ref={ref}
       className={cn(
-        'relative mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+        'relative mt-2 overflow-x-hidden p-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
         className,
       )}
       {...props}
     >
       <motion.div
-        animate={{
-          x: isActive ? isHigherThen : 0,
-          transition: { duration: 0.1, type: 'just' },
-        }}
-        className={cn('left-0 top-0 h-full w-full')}
+        initial="from"
+        animate="to"
+        exit={isHigherThen ? 'exitRight' : 'exitLeft'}
+        variants={variants}
       >
         {children}
       </motion.div>
