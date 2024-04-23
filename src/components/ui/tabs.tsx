@@ -167,8 +167,9 @@ const MotionTabsContent = React.forwardRef<
   const { value } = React.useContext(TabsContext)
 
   const isHigherThen =
+    value.prevValue &&
     value.values.indexOf(value.currentValue) >
-    value.values.indexOf(value.prevValue as string)
+      value.values.indexOf(value.prevValue as string)
 
   const variants = {
     from: {
@@ -178,16 +179,6 @@ const MotionTabsContent = React.forwardRef<
     to: {
       x: 0,
       opacity: 1,
-      transition: { duration: 0.2 },
-    },
-    exitLeft: {
-      x: '-200px',
-      opacity: 0,
-      transition: { duration: 0.2 },
-    },
-    exitRight: {
-      x: '200px',
-      opacity: 0,
       transition: { duration: 0.2 },
     },
   }
@@ -201,12 +192,7 @@ const MotionTabsContent = React.forwardRef<
       )}
       {...props}
     >
-      <motion.div
-        initial="from"
-        animate="to"
-        exit={isHigherThen ? 'exitRight' : 'exitLeft'}
-        variants={variants}
-      >
+      <motion.div initial="from" animate="to" variants={variants}>
         {children}
       </motion.div>
     </TabsPrimitive.Content>
