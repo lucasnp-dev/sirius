@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /** @type {import('tailwindcss').Config} */
 
 const svgToDataUri = require('mini-svg-data-uri')
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const colors = require('tailwindcss/colors')
 const {
   default: flattenColorPalette,
@@ -78,11 +80,20 @@ module.exports = {
           from: { transform: 'translateX(0)' },
           to: { transform: 'translateX(calc(-100% - var(--gap)))' },
         },
+        shimmer: {
+          from: {
+            backgroundPosition: '0 0',
+          },
+          to: {
+            backgroundPosition: '-200% 0',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         slide: 'slide 40s linear infinite',
+        shimmer: 'shimmer 3.3s linear infinite',
       },
       fontFamily: {
         inter: ['Inter', 'sans-serif'],

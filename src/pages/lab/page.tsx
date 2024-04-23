@@ -1,3 +1,6 @@
+import { Undo2 } from 'lucide-react'
+import { Link } from 'react-router-dom'
+
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -20,6 +23,16 @@ import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
 export function Lab() {
   return (
     <div className="container space-y-8">
+      <Button
+        variant="shimmer"
+        className="absolute left-2 top-2 gap-2 border-none"
+        asChild
+      >
+        <Link to="/">
+          <Undo2 size={18} /> to home
+        </Link>
+      </Button>
+
       <TextGenerateEffect
         words="Sirius/Lab"
         className="text-center font-code text-5xl"
