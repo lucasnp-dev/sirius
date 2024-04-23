@@ -10,7 +10,7 @@ import { TechsSection } from './_components/techs-section'
 export function Home() {
   return (
     <div className="container mb-96">
-      <div className="relative flex min-h-[300px] items-center justify-center [@media(min-height:793px)]:min-h-[600px]">
+      <div className="relative flex min-h-[600px] items-center justify-center [@media(min-height:793px)]:min-h-[600px]">
         <div className="max-w-96 space-y-4 text-center">
           <TextGenerateEffect words="Sirius" className="font-code text-5xl" />
 
@@ -35,7 +35,7 @@ export function Home() {
             </motion.div>
           </div>
         </div>
-        <p className="font-code absolute  bottom-2 mx-auto max-w-96 text-sm text-foreground">
+        <p className="absolute bottom-2  mx-auto max-w-96 font-code text-sm text-foreground">
           {' '}
           Integrated with{' '}
           <Link
