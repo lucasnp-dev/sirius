@@ -25,7 +25,7 @@ export function Lab() {
     <div className="container space-y-8">
       <Button
         variant="shimmer"
-        className="absolute left-2 top-2 gap-2 border-none"
+        className="fixed left-2 top-2 gap-2 border-none"
         asChild
       >
         <Link to="/">
@@ -43,8 +43,8 @@ export function Lab() {
             words="Animated Tabs"
             className="text-2xl font-medium"
           />
-          <div className="bg-grid-small-white/[0.2] relative flex justify-center overflow-hidden rounded-xl border border-border py-20">
-            <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+          <div className="bg-grid-small-black/[0.2] dark:bg-grid-small-white/[0.2] relative flex justify-center overflow-hidden rounded-xl border border-border py-20">
+            <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,white)] dark:bg-black dark:[mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
             <MotionsTabs defaultValue="account">
               <TabsList className="w-[400px] ">
                 <MotionTabsTrigger value="account" className="flex-1">

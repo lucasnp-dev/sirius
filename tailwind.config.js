@@ -11,6 +11,7 @@ const {
 
 module.exports = {
   darkMode: ['class'],
+  lightMode: ['class'],
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
@@ -19,6 +20,12 @@ module.exports = {
   ],
   prefix: '',
   theme: {
+    boxShadow: {
+      soft: 'var(--shadow-soft)',
+      inset: 'var(--shadow-inset)',
+      'button-neumorphic': 'var(--button-neumorphic)',
+      'button-neumorphic-inset': 'var(--button-neumorphic-inset)',
+    },
     container: {
       center: true,
       padding: '2rem',
@@ -61,6 +68,9 @@ module.exports = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+      },
+      dropShadow: {
+        neumorphic: 'var("--shadow");',
       },
       borderRadius: {
         lg: 'var(--radius)',
