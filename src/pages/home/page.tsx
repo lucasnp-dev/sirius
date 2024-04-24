@@ -9,13 +9,13 @@ import { TechsSection } from './_components/techs-section'
 
 export function Home() {
   return (
-    <div className="container mb-96">
+    <div className="container mb-96 space-y-8">
       <div className="relative flex min-h-[600px] items-center justify-center [@media(min-height:793px)]:min-h-[600px]">
         <div className="max-w-96 space-y-4 text-center">
           <TextGenerateEffect words="Sirius" className="font-code text-5xl" />
 
           <TextGenerateEffect
-            words="Library of beautiful components for your applications with elegance and minimal style. Illuminated dark mode and cleaned light mode."
+            words="Library of beautiful components for your applications with elegance and minimal style. Illuminated dark mode and neumorphism light mode."
             className="text-sm text-muted-foreground"
           />
 
@@ -25,7 +25,7 @@ export function Home() {
               animate={{ opacity: [0, 1], y: [10, 0] }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              <Button size={'sm'} asChild>
+              <Button asChild variant={'neumorphic'} size={'sm'}>
                 <Link to="/labs" className="text-xs">
                   Get Started
                 </Link>
@@ -37,7 +37,7 @@ export function Home() {
             </motion.div>
           </div>
         </div>
-        <p className="absolute bottom-2  mx-auto max-w-96 font-code text-sm text-foreground">
+        <p className="shadow-inset absolute bottom-2 mx-auto max-w-96 rounded-lg px-4 py-2 font-code text-sm text-foreground">
           {' '}
           Integrated with{' '}
           <Link

@@ -1,3 +1,5 @@
+import { cn } from '@/lib/utils'
+
 import { AnimateEnter } from '../animate-enter'
 import { TechsSlider } from './techs'
 import { TechsDescription } from './techs-description'
@@ -5,10 +7,13 @@ import { TechsDescription } from './techs-description'
 export function TechsSection() {
   return (
     <section className="relative z-[4]">
-      <div className="relative overflow-hidden rounded-t-3xl border-t border-border pt-20">
+      <div className="shadow-soft relative overflow-hidden rounded-3xl border-t border-border py-20 dark:rounded-t-3xl">
         <div
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-0 h-px w-1/2 max-w-[1000px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-l from-transparent via-white/50 via-50% to-transparent"
+          className={cn(
+            'pointer-events-none absolute left-1/2 top-0 h-px',
+            'w-1/2 max-w-[1000px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-l from-transparent via-white/50 via-50% to-transparent',
+          )}
         />
         <div
           aria-hidden="true"
