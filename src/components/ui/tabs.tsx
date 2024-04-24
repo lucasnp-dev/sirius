@@ -166,32 +166,33 @@ const MotionTabsContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => {
   const { value } = React.useContext(TabsContext)
 
-  const isActive = value.currentValue === props.value
-
-  const x = 50
-
   const isHigherThen =
+    value.prevValue &&
     value.values.indexOf(value.currentValue) >
-    value.values.indexOf(value.prevValue as string)
-      ? [-x, 0]
-      : [x, 0]
+      value.values.indexOf(value.prevValue as string)
+
+  const variants = {
+    from: {
+      x: isHigherThen ? '200px' : '-200px',
+      opacity: 0,
+    },
+    to: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 0.2 },
+    },
+  }
 
   return (
     <TabsPrimitive.Content
       ref={ref}
       className={cn(
-        'relative mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+        'relative mt-2 overflow-x-hidden p-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
         className,
       )}
       {...props}
     >
-      <motion.div
-        animate={{
-          x: isActive ? isHigherThen : 0,
-          transition: { duration: 0.1, type: 'just' },
-        }}
-        className={cn('left-0 top-0 h-full w-full')}
-      >
+      <motion.div initial="from" animate="to" variants={variants}>
         {children}
       </motion.div>
     </TabsPrimitive.Content>
