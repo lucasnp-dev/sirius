@@ -25,7 +25,7 @@ export function Home() {
               animate={{ opacity: [0, 1], y: [10, 0] }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              <Button asChild variant={'neumorphic'} size={'sm'}>
+              <Button asChild size={'sm'}>
                 <Link to="/labs" className="text-xs">
                   Get Started
                 </Link>
@@ -37,7 +37,7 @@ export function Home() {
             </motion.div>
           </div>
         </div>
-        <p className="shadow-inset absolute bottom-2 mx-auto max-w-96 rounded-lg px-4 py-2 font-code text-sm text-foreground">
+        <p className="absolute bottom-2 mx-auto max-w-96 rounded-lg px-4 py-2 font-code text-sm text-foreground">
           {' '}
           Integrated with{' '}
           <Link
