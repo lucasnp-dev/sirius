@@ -49,7 +49,7 @@ const TabsTrigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      'inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-[300] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring  focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow',
+      'data-[state=active]:shadow inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-[300] focus-visible:outline-none focus-visible:ring-2  focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground',
       className,
     )}
     {...props}
@@ -142,7 +142,7 @@ const MotionTabsTrigger = React.forwardRef<
         <motion.div
           layoutId="clickedbutton"
           transition={{ type: 'spring', bounce: 0.3, duration: 0.6 }}
-          className={cn('absolute inset-0 rounded-md bg-background shadow')}
+          className={cn('shadow absolute inset-0 rounded-md bg-background')}
         />
       )}
       <span

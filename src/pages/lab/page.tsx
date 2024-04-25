@@ -43,7 +43,7 @@ export function Lab() {
             words="Animated Tabs"
             className="text-2xl font-medium"
           />
-          <div className="bg-grid-small-black/[0.2] dark:bg-grid-small-white/[0.2] relative flex justify-center overflow-hidden rounded-xl border border-border py-20">
+          <div className="relative flex justify-center overflow-hidden rounded-xl border border-border py-20 bg-grid-small-black/[0.2] dark:bg-grid-small-white/[0.2]">
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,white)] dark:bg-black dark:[mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
             <MotionsTabs defaultValue="account">
               <TabsList className="w-[400px] ">
