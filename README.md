@@ -12,3 +12,5 @@ Library of beautiful components for your applications with elegance and minimal 
 - [Luxe](https://luxe.guhrodrigues.com/);
 - [Rodz](https://twitter.com/guilherme_rodz);
 - [Resend](https://resend.com/);
+
+Development

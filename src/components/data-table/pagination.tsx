@@ -1,9 +1,9 @@
+// TODO: react-icons
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
   DoubleArrowLeftIcon,
   DoubleArrowRightIcon,
-  // @ts-expect-error icons
 } from '@radix-ui/react-icons'
 import { Table } from '@tanstack/react-table'
 
