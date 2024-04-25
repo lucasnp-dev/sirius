@@ -12,7 +12,8 @@ export const accountColumnsAdvanced: ColumnDef<Account>[] = [
           table.getIsAllPageRowsSelected() ||
           (table.getIsSomePageRowsSelected() && 'indeterminate')
         }
-        onCheckedChange={(value: string) =>
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        onCheckedChange={(value: any) =>
           table.toggleAllPageRowsSelected(!!value)
         }
         aria-label="Select all"
@@ -21,7 +22,8 @@ export const accountColumnsAdvanced: ColumnDef<Account>[] = [
     cell: ({ row }) => (
       <Checkbox
         checked={row.getIsSelected()}
-        onCheckedChange={(value: string) => row.toggleSelected(!!value)}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        onCheckedChange={(value: any) => row.toggleSelected(!!value)}
         aria-label="Select row"
       />
     ),
