@@ -1,11 +1,11 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs'
-import { motion } from 'framer-motion'
+import { motion, type MotionProps } from 'framer-motion'
 import * as React from 'react'
 
 import { cn } from '@/lib/utils'
 
 interface StateTab {
-  currentValue: string
+  currentValue: string | undefined
   values: string[]
   prevValue?: string
 }
@@ -24,11 +24,6 @@ const TabsContext = React.createContext<TabsContextTypes>({
   setCurrentValue: () => {},
   setValues: () => {},
 })
-
-interface MotionsTabProps {
-  defaultValue: string
-  children: React.ReactNode
-}
 
 const Tabs = TabsPrimitive.Root
 
@@ -77,7 +72,10 @@ const TabsContent = React.forwardRef<
 ))
 TabsContent.displayName = TabsPrimitive.Content.displayName
 
-const MotionsTabs = ({ children, defaultValue }: MotionsTabProps) => {
+const MotionsTabs = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root>
+>(({ className, defaultValue, onValueChange, ...props }, ref) => {
   const [value, setvalue] = React.useState<StateTab>({
     currentValue: defaultValue,
     values: [],
@@ -89,6 +87,8 @@ const MotionsTabs = ({ children, defaultValue }: MotionsTabProps) => {
       currentValue: value,
       prevValue: prev.currentValue,
     }))
+
+    onValueChange?.(value)
   }
 
   const setValues = (value: string) => {
@@ -103,13 +103,13 @@ const MotionsTabs = ({ children, defaultValue }: MotionsTabProps) => {
       <TabsPrimitive.Root
         defaultValue={value.currentValue}
         onValueChange={setCurrentValue}
-        className="overflow-hidden"
-      >
-        {children}
-      </TabsPrimitive.Root>
+        ref={ref}
+        {...props}
+        className={cn('overflow-hidden', className)}
+      />
     </TabsContext.Provider>
   )
-}
+})
 
 MotionsTabs.displayName = 'MotionsTabs'
 
@@ -162,36 +162,40 @@ MotionTabsTrigger.displayName = 'MotionTabsTrigger'
 
 const MotionTabsContent = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
->(({ className, children, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content> & {
+    motionProps?: MotionProps
+  }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+>(({ className, children, motionProps, ...props }, ref) => {
   const { value } = React.useContext(TabsContext)
 
-  const isActive = value.currentValue === props.value
-
-  const x = 50
-
   const isHigherThen =
-    value.values.indexOf(value.currentValue) >
-    value.values.indexOf(value.prevValue as string)
-      ? [-x, 0]
-      : [x, 0]
+    value.prevValue &&
+    value.values.indexOf(value.currentValue || '') >
+      value.values.indexOf(value.prevValue)
+
+  const variantsDefault = {
+    from: {
+      x: isHigherThen ? '200px' : '-200px',
+      opacity: 0,
+    },
+    to: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 0.2 },
+    },
+  }
 
   return (
     <TabsPrimitive.Content
       ref={ref}
       className={cn(
-        'relative mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+        'relative mt-2 p-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
         className,
       )}
       {...props}
     >
-      <motion.div
-        animate={{
-          x: isActive ? isHigherThen : 0,
-          transition: { duration: 0.1, type: 'just' },
-        }}
-        className={cn('left-0 top-0 h-full w-full')}
-      >
+      <motion.div initial="from" animate="to" variants={variantsDefault}>
         {children}
       </motion.div>
     </TabsPrimitive.Content>

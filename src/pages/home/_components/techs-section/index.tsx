@@ -7,7 +7,7 @@ import { TechsDescription } from './techs-description'
 export function TechsSection() {
   return (
     <section className="relative z-[4]">
-      <div className="shadow-soft relative overflow-hidden rounded-3xl border-t border-border py-20 dark:rounded-t-3xl">
+      <div className="relative overflow-hidden rounded-3xl border-t border-border py-20 dark:rounded-t-3xl">
         <div
           aria-hidden
           className={cn(
