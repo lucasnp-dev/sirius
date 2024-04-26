@@ -11,7 +11,6 @@ const {
 
 module.exports = {
   darkMode: ['class'],
-  lightMode: ['class'],
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',

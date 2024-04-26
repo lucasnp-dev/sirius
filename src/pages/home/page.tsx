@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Github } from 'lucide-react'
+// import { Github } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
@@ -15,7 +15,7 @@ export function Home() {
           <TextGenerateEffect words="Sirius" className="font-code text-5xl" />
 
           <TextGenerateEffect
-            words="Library of beautiful components for your applications with elegance and minimal style. Illuminated dark mode and neumorphism light mode."
+            words="Library of beautiful components for your applications with elegance and minimal style. Illuminated dark mode and clear light mode."
             className="text-sm text-muted-foreground"
           />
 
@@ -32,7 +32,10 @@ export function Home() {
               </Button>
 
               <Button size={'sm'} variant={'shimmer'} className="gap-2 text-xs">
-                <Github size={18} /> 227
+                {/* <Github size={18} /> 227 */}
+                <Link to="/docs" className="text-xs">
+                  Docs
+                </Link>
               </Button>
             </motion.div>
           </div>
