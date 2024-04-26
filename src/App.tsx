@@ -6,7 +6,6 @@ import { RouterProvider } from 'react-router-dom'
 
 import { ThemeProvider } from '@/components/theme-provider'
 
-import { ModeToggle } from './components/mode-toggle'
 import { router } from './routes'
 
 const queryClient = new QueryClient()
@@ -18,7 +17,6 @@ export function App() {
         <HelmetProvider>
           <Helmet titleTemplate="%s | Sirius" />
           <div className="relative">
-            <ModeToggle />
             <RouterProvider router={router} />
           </div>
         </HelmetProvider>
