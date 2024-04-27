@@ -17,10 +17,10 @@ export default function TabsExample() {
           Content 2
         </MotionTabsTrigger>
       </TabsList>
-      <MotionTabsContent value="1" className="w-[400px]">
+      <MotionTabsContent value="1">
         <p>Some content</p>
       </MotionTabsContent>
-      <MotionTabsContent value="2" className="w-[400px]">
+      <MotionTabsContent value="2">
         <p>Another content</p>
       </MotionTabsContent>
     </MotionsTabs>
