@@ -9,24 +9,25 @@ import {
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+
 import {
   MotionsTabs,
   MotionTabsContent,
+  MotionTabsList,
   MotionTabsTrigger,
-  TabsList,
-} from '@/components/ui/tabs'
+} from '../ui/motion-tabs'
 
 export default function TabsExample() {
   return (
     <MotionsTabs defaultValue="account">
-      <TabsList className="w-[400px] ">
+      <MotionTabsList className="w-[400px] ">
         <MotionTabsTrigger value="account" className="flex-1">
           Account
         </MotionTabsTrigger>
         <MotionTabsTrigger value="password" className="flex-1">
           Password
         </MotionTabsTrigger>
-      </TabsList>
+      </MotionTabsList>
       <MotionTabsContent value="account" className="w-[400px]">
         <Card className="relative overflow-hidden rounded-3xl border-b-0 border-t border-border border-x-border/50">
           <div
