@@ -6,7 +6,7 @@ import { Separator } from '@/components/ui/separator'
 
 export function DocsTabsPage() {
   return (
-    <div className="space-y-6 py-8">
+    <div className="max-w-full space-y-6 py-8">
       <div className="space-y-2">
         <h1 className="text-3xl font-bold">Tabs Animated</h1>
         <p className="text-muted-foreground">Motion Tabs</p>
@@ -57,7 +57,7 @@ function Steps({
   children: React.ReactNode
 }) {
   return (
-    <div className="pb-4">
+    <div className="max-w-full pb-4">
       <div className="flex items-center space-x-2">
         <Button
           className="pointer-events-none h-4 w-4 rounded-full px-3 py-3 text-xs"
@@ -68,11 +68,11 @@ function Steps({
         </Button>
         <h2 className="font-bold">{title}</h2>
       </div>
-      <div className="flex space-x-2">
+      <div className="flex max-w-full space-x-2">
         <div className="w-6">
           <Separator className="mx-auto mt-2 h-full" orientation="vertical" />
         </div>
-        <div className="flex-1 space-y-8 pl-4 pt-4">{children}</div>
+        <div className="max-w-4xl flex-1 space-y-8 pl-4 pt-4">{children}</div>
       </div>
     </div>
   )

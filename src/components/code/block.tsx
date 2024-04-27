@@ -36,7 +36,7 @@ export const CodeBlock = ({
   }
 
   return (
-    <ScrollArea className="static max-h-[800px] overflow-auto rounded-lg border border-border">
+    <ScrollArea className="max-h-[800px] overflow-auto rounded-lg border border-border">
       <Button
         key={copied ? 'copied' : 'copy'}
         aria-label={copied ? 'Copied' : 'Copy'}
