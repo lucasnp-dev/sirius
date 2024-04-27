@@ -54,7 +54,7 @@ export function DocsLayout() {
         <aside className="sticky top-14 max-h-screen">
           <Sidebar />
         </aside>
-        <div className="relative h-[1000px] space-y-4 p-4">
+        <div className="relative space-y-4 p-4">
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>Docs</BreadcrumbItem>
