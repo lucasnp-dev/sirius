@@ -35,10 +35,6 @@ const sidebarDocs: DocsSidebarSection[] = [
         name: 'Tabs Animated',
         to: '/docs/components/tabs',
       },
-      {
-        name: 'Table',
-        to: '/docs/components/table',
-      },
     ],
   },
 ]

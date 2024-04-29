@@ -15,9 +15,9 @@ import {
   MotionTabsContent,
   MotionTabsList,
   MotionTabsTrigger,
-} from '../ui/motion-tabs'
+} from '../../ui/motion-tabs'
 
-export default function TabsExample() {
+export function TabsExample() {
   return (
     <MotionsTabs defaultValue="account">
       <MotionTabsList className="w-[400px] ">

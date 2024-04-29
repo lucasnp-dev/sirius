@@ -5,17 +5,19 @@ import { useState } from 'react'
 
 import { cn } from '@/lib/utils'
 
-import { Button } from '../ui/button'
-import { ScrollArea } from '../ui/scroll-area'
+import { Button } from './ui/button'
+import { ScrollArea } from './ui/scroll-area'
 
 export const CodeBlock = ({
   code,
   language,
   copy,
+  title,
 }: {
   code: string
   language: string
   copy?: string
+  title?: string
 }) => {
   const [copied, setCopied] = useState(false)
 
@@ -61,6 +63,11 @@ export const CodeBlock = ({
             className={cn('m-0 max-w-full !bg-neutral-950 p-4', className)}
             style={style}
           >
+            {title && (
+              <p className="mb-4 font-code text-sm text-muted-foreground">
+                {title}
+              </p>
+            )}
             {tokens.map((line, i) => (
               <div key={i} {...getLineProps({ line })}>
                 {line.map((token, key) => (
