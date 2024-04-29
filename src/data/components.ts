@@ -43,7 +43,6 @@ const components: ComponentType[] = [
     usage: {
       code: tabsCodes.usage,
       language: 'tsx',
-      title: 'components/ui/motions-tabs',
     },
   },
 ]
