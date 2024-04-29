@@ -12,6 +12,17 @@ import {
 import { DataTablePagination } from './pagination'
 
 interface DataTableProps<TData> {
+  /**
+   * Table is an instance of tanstack/react-table.
+   * @see  Read more: https://tanstack.com/table/v8/docs/guide/tables
+   * @description This prop constructs the table with colunms, data, pagination...
+   * @example
+   * import { getCoreRowModel, useReactTable} from '@tanstack/react-table'
+   * const Component = () => {
+   *  const table = useReactTable({ columns, data, getCoreRowModel: getCoreRowModel() })
+   *  return <DataTable table={table} />
+   * }
+   */
   table: TableType<TData>
 }
 
@@ -38,17 +49,18 @@ const rowVariants = {
   },
 }
 
-export function DataTable<TData>({ table }: DataTableProps<TData>) {
-  // usa essa key para quando os dados mudarem, o animation perceber que algo mudou, e refazer a animação
+/**
+ * DataTable - Component that renders a table with row animation
+ * @param {DataTableProps}
+ * @returns {JSX.Element}
+ */
+export function DataTable<TData>({
+  table,
+}: DataTableProps<TData>): JSX.Element {
+  // To animate the table
   const key = table.getRowModel().rows.reduce((acc, item) => acc + item?.id, '')
 
   // TODO: Pagination with back-end
-
-  /*
-   * Table
-   * TableHeader > TableRow > TableHead -> Receive const table
-   * MotionTableBody > MotionTableRow > TableCell -> Receive const table
-   */
 
   return (
     <div>

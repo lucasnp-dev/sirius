@@ -1,11 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom'
 
+import { loader } from './data/components'
 import { DocsLayout } from './pages/_layouts/_docs'
 import { HomeLayout } from './pages/_layouts/home'
 import { BlocksPage } from './pages/blocks/page'
+import { ComponentPage } from './pages/docs/components/[slug]/page'
+import { DocsComponentsPage } from './pages/docs/components/page'
 import { DocsPage } from './pages/docs/page'
-import { DocsTablePage } from './pages/docs/table/page'
-import { DocsTabsPage } from './pages/docs/tabs/page'
 import { Home } from './pages/home/page'
 import { Lab } from './pages/lab/page'
 import { LabTest } from './pages/lab/test/page'
@@ -38,16 +39,17 @@ export const router = createBrowserRouter([
     element: <DocsLayout />,
     children: [
       {
-        path: '/docs',
+        path: '',
         element: <DocsPage />,
       },
       {
-        path: '/docs/components/tabs',
-        element: <DocsTabsPage />,
+        path: 'components',
+        element: <DocsComponentsPage />,
       },
       {
-        path: '/docs/components/table',
-        element: <DocsTablePage />,
+        path: 'components/:slug',
+        element: <ComponentPage />,
+        loader,
       },
     ],
   },
