@@ -28,24 +28,49 @@ interface DataTableProps<TData> {
 
 const MotionTableRow = motion(TableRow)
 const MotionTableBody = motion(TableBody)
+const MotionHeader = motion(TableHeader)
+
+// const bodyVariants = {
+//   from: {
+//     opacity: 0,
+//   },
+//   to: {
+//     opacity: 1,
+//     transition: {
+//       staggerChildren: 0.05,
+//     },
+//   },
+// }
 
 const bodyVariants = {
-  from: {
-    opacity: 0,
-  },
-  to: {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
     opacity: 1,
+    scale: 1,
     transition: {
-      staggerChildren: 0.05,
+      delayChildren: 0.2,
+      staggerChildren: 0.1,
     },
   },
 }
 
+// const rowVariants = {
+//   from: { x: -200, opacity: 0 },
+//   to: {
+//     x: -0,
+//     opacity: 1,
+//   },
+// }
+
 const rowVariants = {
-  from: { x: -200, opacity: 0 },
-  to: {
-    x: -0,
+  hidden: { y: 20, opacity: 0, filter: 'blur(5px)' },
+  visible: {
+    y: 0,
     opacity: 1,
+    filter: 'blur(0px)',
+    transition: {
+      ease: 'easeInOut',
+    },
   },
 }
 
@@ -68,9 +93,12 @@ export function DataTable<TData>({
         <Table>
           {/* #region ---------- TableHeader */}
 
-          <TableHeader className="bg-muted text-muted-foreground">
+          <MotionHeader
+            className="bg-muted text-muted-foreground"
+            transition={{ staggerChildren: 0.5 }}
+          >
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
+              <MotionTableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id}>
@@ -83,9 +111,9 @@ export function DataTable<TData>({
                     </TableHead>
                   )
                 })}
-              </TableRow>
+              </MotionTableRow>
             ))}
-          </TableHeader>
+          </MotionHeader>
 
           {/* #endregion */}
 
@@ -94,9 +122,8 @@ export function DataTable<TData>({
           <MotionTableBody
             key={key}
             variants={bodyVariants}
-            initial="from"
-            animate="to"
-            exit="from"
+            initial="hidden"
+            animate="visible"
           >
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
