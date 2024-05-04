@@ -14,7 +14,7 @@ interface DocsSidebarSection {
   items?: DocsSidebarItem[]
 }
 
-const sidebarDocs: DocsSidebarSection[] = [
+export const sidebarDocs: DocsSidebarSection[] = [
   {
     name: 'Getting Started',
     items: [

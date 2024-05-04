@@ -60,7 +60,7 @@ export const CodeBlock = ({
       <Highlight theme={themes.jettwaveDark} code={code} language={language}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre
-            className={cn('m-0 max-w-full !bg-neutral-950 p-4', className)}
+            className={cn('m-0 !bg-neutral-950 p-4', className)}
             style={style}
           >
             {title && (
