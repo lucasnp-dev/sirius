@@ -19,8 +19,8 @@ export function Menu() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-10  p-4 backdrop-blur-sm">
-      <div className="container mx-auto flex items-center justify-between">
+    <header className="sticky top-0 z-10  backdrop-blur-sm">
+      <div className="container mx-auto flex items-center justify-between py-4 max-lg:px-4">
         <Sheet>
           <SheetTrigger asChild>
             <Button className="lg:hidden" variant={'ghost'}>
