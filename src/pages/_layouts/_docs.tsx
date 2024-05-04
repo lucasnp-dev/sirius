@@ -50,11 +50,11 @@ export function DocsLayout() {
   return (
     <div className="flex min-h-screen flex-col">
       <Menu />
-      <main className="container relative grid flex-1 grid-cols-[260px_1fr]">
-        <aside className="sticky top-14 max-h-screen">
+      <main className="container relative flex-1 lg:grid lg:grid-cols-12">
+        <aside className="max-lg:hidden lg:sticky lg:top-14 lg:col-span-3 lg:max-h-screen">
           <Sidebar />
         </aside>
-        <div className="relative space-y-4 p-4">
+        <div className="relative space-y-4 p-4 lg:col-span-9">
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>Docs</BreadcrumbItem>

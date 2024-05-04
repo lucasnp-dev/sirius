@@ -16,7 +16,7 @@ export function ComponentPage() {
         <p className="text-muted-foreground">{component.description}</p>
       </div>
       {/** Demo Block */}
-      <div className="relative flex justify-center overflow-hidden rounded-xl border border-border py-20 bg-grid-small-black/[0.2] dark:bg-grid-small-white/[0.2]">
+      <div className="relative flex justify-center overflow-hidden rounded-xl border border-border px-4 py-20 bg-grid-small-black/[0.2] dark:bg-grid-small-white/[0.2]">
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,white)] dark:bg-black dark:[mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
         <component.component />
       </div>

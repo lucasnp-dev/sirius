@@ -20,7 +20,7 @@ import {
 export function TabsExample() {
   return (
     <MotionsTabs defaultValue="account">
-      <MotionTabsList className="w-[400px] ">
+      <MotionTabsList className="w-full">
         <MotionTabsTrigger value="account" className="flex-1">
           Account
         </MotionTabsTrigger>
@@ -28,7 +28,7 @@ export function TabsExample() {
           Password
         </MotionTabsTrigger>
       </MotionTabsList>
-      <MotionTabsContent value="account" className="w-[400px]">
+      <MotionTabsContent value="account" className="md:w-[400px]">
         <Card className="relative overflow-hidden rounded-3xl border-b-0 border-t border-border border-x-border/50">
           <div
             aria-hidden
