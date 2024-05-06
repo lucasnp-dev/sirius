@@ -186,7 +186,15 @@ const MotionTabsTrigger = React.forwardRef<
       {isActive && (
         <motion.div
           layoutId="clickedbutton"
-          transition={{ type: 'spring', bounce: 0.3, duration: 0.6 }}
+          transition={{
+            type: 'spring',
+            stiffness: 90,
+            mass: 1,
+            damping: 14,
+            // bounce: 0.3,
+            // duration: 0.6,
+            ease: 'easeInOut',
+          }}
           className={cn('shadow absolute inset-0 rounded-md bg-background')}
         />
       )}
@@ -229,19 +237,29 @@ const MotionTabsContent = React.forwardRef<
 
   const variantsDefault = {
     from: {
-      x: isHigherThen ? '200px' : '-200px',
+      x: isHigherThen ? '20px' : '-20px',
       opacity: 0,
     },
     to: {
       x: 0,
       opacity: 1,
-      transition: { duration: 0.2 },
     },
   }
 
   return (
     <TabsContent ref={ref} {...props}>
-      <motion.div initial="from" animate="to" variants={variantsDefault}>
+      <motion.div
+        initial="from"
+        animate="to"
+        transition={{
+          ease: 'easeInOut',
+          type: 'spring',
+          stiffness: 90,
+          mass: 1,
+          damping: 12,
+        }}
+        variants={variantsDefault}
+      >
         {children}
       </motion.div>
     </TabsContent>
