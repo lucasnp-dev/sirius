@@ -1,10 +1,7 @@
-import {
-  DropdownMenuGroup,
-  DropdownMenuTrigger,
-} from '@radix-ui/react-dropdown-menu'
 import { Github, Settings, Undo2, User, X } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
+import { LightBorder, ShineBorder } from '@/components/shine'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -14,15 +11,14 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-} from '@/components/ui/dropdown-menu'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import {
+  MotionDropdownMenu,
+  MotionDropdownMenuContent,
+  MotionDropdownMenuItem,
+  MotionDropdownMenuTrigger,
+} from '@/components/ui/motion-dropdown-menu'
 import {
   MotionsTabs,
   MotionTabsContent,
@@ -56,37 +52,32 @@ export function Lab() {
           />
           <div className="relative flex h-[444px] items-center justify-center overflow-hidden rounded-xl border border-border py-20 bg-grid-small-black/[0.2] dark:bg-grid-small-white/[0.2]">
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,white)] dark:bg-black dark:[mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
+            <MotionDropdownMenu>
+              <MotionDropdownMenuTrigger asChild>
                 <Button variant={'outline'}>Open</Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56">
-                <DropdownMenuGroup>
-                  <DropdownMenuItem>
-                    <User size={16} className="mr-2" />
-                    My Profile
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <Settings size={16} className="mr-2" />
-                    Settings
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuGroup>
-                  <DropdownMenuLabel className="text-muted-foreground">
-                    Share
-                  </DropdownMenuLabel>
-                  <DropdownMenuItem>
-                    <Github size={16} className="mr-2" />
-                    Github
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <X size={16} className="mr-2" />
-                    Twitter
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
+              </MotionDropdownMenuTrigger>
+              <MotionDropdownMenuContent className="relative w-56">
+                <ShineBorder />
+                <LightBorder />
+                <MotionDropdownMenuItem>
+                  <User size={16} className="mr-2" />
+                  My Profile
+                </MotionDropdownMenuItem>
+                <MotionDropdownMenuItem>
+                  <Settings size={16} className="mr-2" />
+                  Settings
+                </MotionDropdownMenuItem>
+
+                <MotionDropdownMenuItem>
+                  <Github size={16} className="mr-2" />
+                  Github
+                </MotionDropdownMenuItem>
+                <MotionDropdownMenuItem>
+                  <X size={16} className="mr-2" />
+                  Twitter
+                </MotionDropdownMenuItem>
+              </MotionDropdownMenuContent>
+            </MotionDropdownMenu>
           </div>
         </section>
       </main>
@@ -179,3 +170,28 @@ export function Tabs() {
     </MotionsTabs>
   )
 }
+
+// const comment = "<DropdownMenuGroup>
+// <DropdownMenuItem>
+//   <User size={16} className="mr-2" />
+//   My Profile
+// </DropdownMenuItem>
+// <DropdownMenuItem>
+//   <Settings size={16} className="mr-2" />
+//   Settings
+// </DropdownMenuItem>
+// </DropdownMenuGroup>
+// <DropdownMenuSeparator />
+// <DropdownMenuGroup>
+// <DropdownMenuLabel className="text-muted-foreground">
+//   Share
+// </DropdownMenuLabel>
+// <DropdownMenuItem>
+//   <Github size={16} className="mr-2" />
+//   Github
+// </DropdownMenuItem>
+// <DropdownMenuItem>
+//   <X size={16} className="mr-2" />
+//   Twitter
+// </DropdownMenuItem>
+// </DropdownMenuGroup>"
