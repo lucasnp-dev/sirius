@@ -146,11 +146,7 @@ List.displayName = 'List'
  */
 const Step = React.forwardRef<React.ElementRef<'div'>, StepProps>(
   ({ children, value, ...props }, ref) => {
-    const { state, setValue } = React.useContext(MultiStepContext)
-
-    React.useEffect(() => {
-      setValue(value)
-    }, [setValue, value])
+    const { state } = React.useContext(MultiStepContext)
 
     const isPrev =
       state.values.indexOf(value) <
@@ -244,7 +240,12 @@ const Content = React.forwardRef<
     value: string
   }
 >(({ value, children, ...props }, ref) => {
-  const { state } = React.useContext(MultiStepContext)
+  const { state, setValue } = React.useContext(MultiStepContext)
+
+  React.useEffect(() => {
+    setValue(value)
+  }, [setValue, value])
+
   return (
     <AnimatePresence mode="wait">
       <motion.div
