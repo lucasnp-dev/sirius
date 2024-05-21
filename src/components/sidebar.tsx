@@ -35,6 +35,10 @@ export const sidebarDocs: DocsSidebarSection[] = [
         name: 'Tabs Animated',
         to: '/docs/components/tabs',
       },
+      {
+        name: 'Multi Step',
+        to: '/docs/components/multi-step',
+      },
     ],
   },
 ]
