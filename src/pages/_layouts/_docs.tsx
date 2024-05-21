@@ -38,6 +38,12 @@ const breadcumbs: BreadcumbSection[] = [
       name: 'Table',
     },
   },
+  {
+    path: '/docs/components/multi-step',
+    item: {
+      name: 'Multi Step',
+    },
+  },
 ]
 
 function returnBreadcumb(path: string) {
