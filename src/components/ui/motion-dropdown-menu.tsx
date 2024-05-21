@@ -25,7 +25,11 @@ const container = {
       staggerChildren: 0.09,
     },
   },
-  exit: { scale: 0.3, y: -50, transition: { duration: 0.15 } },
+  exit: {
+    scale: 0.3,
+    y: -50,
+    transition: { duration: 0.15 },
+  },
 }
 
 const item = {
@@ -212,11 +216,15 @@ MotionDropdownMenuContent.displayName = 'MotionDropdownMenuContent'
 const MotionDropdownMenuItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuItem>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuItem>
->(({ children, ...props }, ref) => (
-  <DropdownMenuItem ref={ref} {...props} asChild>
-    <motion.span variants={item}>{children}</motion.span>
-  </DropdownMenuItem>
-))
+>(({ children, ...props }, ref) => {
+  return (
+    <DropdownMenuItem ref={ref} {...props} asChild>
+      <motion.span variants={item} key={crypto.randomUUID()}>
+        {children}
+      </motion.span>
+    </DropdownMenuItem>
+  )
+})
 
 // TODO: animation side blur
 MotionDropdownMenuItem.displayName = 'MotionDropdownMenuItem'
