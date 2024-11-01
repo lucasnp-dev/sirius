@@ -1,9 +1,3 @@
 {
-  "extends": [
-    "@rocketseat/eslint-config/react"
-  ],
-  "plugins": ["simple-import-sort"],
-  "rules": {
-    "simple-import-sort/imports": "error"
-  }
+  "extends": ["next/core-web-vitals", "next/typescript"]
 }
