@@ -31,12 +31,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${sourceCodePro.variable} font-sans antialiased`}
       >
-        {children}
-        <footer className="py-2">
-          <p className="text-center text-sm text-muted-foreground">
-            Made by Lucas Nunes.
-          </p>
-        </footer>
+        <div className="flex min-h-screen flex-col">
+          <main className="flex-1">{children}</main>
+
+          <footer className="py-2">
+            <p className="text-center text-sm text-muted-foreground">
+              Made by Lucas Nunes.
+            </p>
+          </footer>
+        </div>
       </body>
     </html>
   )
