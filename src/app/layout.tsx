@@ -5,14 +5,15 @@ import localFont from 'next/font/local'
 import React from 'react'
 
 const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
+  src: './fonts/Inter-VariableFont_opsz,wght.ttf',
+  variable: '--font-inter-sans',
   weight: '100 900',
 })
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
+
+const sourceCodePro = localFont({
+  src: './fonts/SourceCodePro-Light.ttf',
+  variable: '--font-source-code-pro',
+  weight: '300',
 })
 
 export const metadata: Metadata = {
@@ -28,9 +29,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${sourceCodePro.variable} font-sans antialiased`}
       >
         {children}
+        <footer className="py-2">
+          <p className="text-center text-sm text-muted-foreground">
+            Made by Lucas Nunes.
+          </p>
+        </footer>
       </body>
     </html>
   )
