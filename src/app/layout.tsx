@@ -1,17 +1,17 @@
-import './globals.css'
+import '../styles/globals.css'
 
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import React from 'react'
 
 const geistSans = localFont({
-  src: './fonts/Inter-VariableFont_opsz,wght.ttf',
+  src: '../fonts/Inter-VariableFont_opsz,wght.ttf',
   variable: '--font-inter-sans',
   weight: '100 900',
 })
 
 const sourceCodePro = localFont({
-  src: './fonts/SourceCodePro-Light.ttf',
+  src: '../fonts/SourceCodePro-Light.ttf',
   variable: '--font-source-code-pro',
   weight: '300',
 })

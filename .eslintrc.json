@@ -47,6 +47,8 @@
       ],
       "global-require": "off",
       "eslint-plugin-import/no-extraneous-dependencies": "off",
-      "react/no-array-index-key": "off"
+      "import/no-extraneous-dependencies": "off",
+      "react/no-array-index-key": "off",
+      "import/no-anonymous-default-export": "off"
     }
 }

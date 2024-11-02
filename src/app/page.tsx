@@ -27,8 +27,8 @@ export default function Home() {
           </p>
         </div>
         <div className="flex gap-4">
-          <Button variant="secondary" className="mx-auto block">
-            Get started
+          <Button variant="secondary" className="mx-auto block" asChild>
+            <Link href="/docs/getting-started/introduction">Get started</Link>
           </Button>
           <Button>Github</Button>
         </div>
@@ -207,7 +207,7 @@ export default function Home() {
           {createArray(0, 16).map((_, i) => (
             <div
               key={i}
-              className="animate-slide flex shrink-0 justify-around gap-10 [--gap:1rem]"
+              className="flex shrink-0 animate-slide justify-around gap-10 [--gap:1rem]"
               data-id={`slider-child-${i + 1}`}
             >
               {TECHS.map(({ icon, name }) => (
