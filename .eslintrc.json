@@ -52,6 +52,7 @@
       "import/no-anonymous-default-export": "off",
       "no-shadow": "off",
       "react/jsx-no-constructed-context-values": "off",
-      "react/jsx-no-useless-fragment": "off"
+      "react/jsx-no-useless-fragment": "off",
+      "prefer-const": "off"
     }
 }

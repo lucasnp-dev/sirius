@@ -1,32 +1,44 @@
 'use client'
 
+import { useQuery } from '@tanstack/react-query'
 import { motion, Variants } from 'framer-motion'
 import { Copy, CopyCheck } from 'lucide-react'
 import { Highlight, themes } from 'prism-react-renderer'
 import { useState } from 'react'
 
+import { getCode } from '@/data/code'
+import { CodeType } from '@/lib/config/docs-pages'
 import { cn } from '@/lib/utils'
 
 import { Button } from './ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from './ui/dropdown-menu'
 import { ScrollArea } from './ui/scroll-area'
 
 export function CodeBlock({
-  code,
+  file,
   language,
-  copy,
   title,
 }: {
-  code: string
+  file: string
   language: string
-  copy?: string
   title?: string
 }) {
   const [copied, setCopied] = useState(false)
 
+  const { data: code } = useQuery({
+    queryKey: ['file', file],
+    queryFn: () => getCode({ path: file }),
+  })
+
   const onCopy = () => {
     setCopied(true)
 
-    navigator.clipboard.writeText(copy || code)
+    navigator.clipboard.writeText(code || '')
 
     setTimeout(() => {
       setCopied(false)
@@ -41,13 +53,13 @@ export function CodeBlock({
 
   return (
     <div className="">
-      <div className="flex items-center justify-end rounded-t-lg border bg-neutral-950 p-2">
+      <div className="flex items-center justify-end rounded-t-lg border bg-secondary p-2 dark:bg-neutral-900">
         <Button
           key={copied ? 'copied' : 'copy'}
           aria-label={copied ? 'Copied' : 'Copy'}
           size="sm"
           className=""
-          variant="secondary"
+          variant="outline"
           onClick={onCopy}
         >
           <motion.span
@@ -61,11 +73,18 @@ export function CodeBlock({
           </motion.span>
         </Button>
       </div>
-      <ScrollArea className="border border-b-0 border-t-0">
-        <Highlight theme={themes.jettwaveDark} code={code} language={language}>
+      <ScrollArea className="max-h-[800px] overflow-auto rounded-b-lg border border-t-0">
+        <Highlight
+          theme={themes.jettwaveDark}
+          code={code || ''}
+          language={language}
+        >
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre
-              className={cn('m-0 !bg-neutral-900 p-4', className)}
+              className={cn(
+                'm-0 !bg-neutral-900 p-4 dark:!bg-background',
+                className,
+              )}
               style={style}
             >
               {title && (
@@ -89,20 +108,20 @@ export function CodeBlock({
 }
 
 export function BashBlock({
-  code,
+  codes,
   language,
   title,
 }: {
-  code: string
+  codes: CodeType[]
   language: string
   title?: string
 }) {
   const [copied, setCopied] = useState(false)
 
-  const onCopy = () => {
+  const onCopy = (value: string) => {
     setCopied(true)
 
-    navigator.clipboard.writeText(code)
+    navigator.clipboard.writeText(value)
 
     setTimeout(() => {
       setCopied(false)
@@ -116,47 +135,70 @@ export function BashBlock({
   }
 
   return (
-    <Highlight theme={themes.jettwaveDark} code={code} language={language}>
-      {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre
-          className={cn(
-            'relative m-0 max-w-full overflow-x-auto rounded-lg border border-border !bg-neutral-950 p-4',
-            className,
-          )}
-          style={style}
-        >
-          {title && (
-            <p className="font-code mb-4 text-sm text-muted-foreground">
-              {title}
-            </p>
-          )}
-          <Button
-            key={copied ? 'copied' : 'copy'}
-            aria-label={copied ? 'Copied' : 'Copy'}
-            size="sm"
-            className="absolute right-4 top-1/2 -translate-y-1/2"
-            variant="secondary"
-            onClick={onCopy}
-          >
-            <motion.span
-              variants={variants}
-              initial="from"
-              animate="to"
-              exit="exit"
-              transition={{ duration: 0.4 }}
+    <div className="">
+      <div className="flex items-center justify-end rounded-t-lg border bg-secondary p-2 dark:bg-neutral-900">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              key={copied ? 'copied' : 'copy'}
+              aria-label={copied ? 'Copied' : 'Copy'}
+              size="sm"
+              className=""
+              variant="outline"
             >
-              {copied ? <CopyCheck size={14} /> : <Copy size={14} />}
-            </motion.span>
-          </Button>
-          {tokens.map((line, i) => (
-            <div key={i} {...getLineProps({ line })}>
-              {line.map((token, key) => (
-                <span key={key} {...getTokenProps({ token })} />
+              <motion.span
+                variants={variants}
+                initial="from"
+                animate="to"
+                exit="exit"
+                transition={{ duration: 0.4 }}
+              >
+                {copied ? <CopyCheck size={14} /> : <Copy size={14} />}
+              </motion.span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            {codes.map((code) => (
+              <DropdownMenuItem
+                key={code.manager}
+                onClick={() => onCopy(code.code)}
+              >
+                {code.manager}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+      <ScrollArea className="rounded-b-lg border border-t-0">
+        <Highlight
+          theme={themes.jettwaveDark}
+          code={codes[0].code}
+          language={language}
+        >
+          {({ className, style, tokens, getLineProps, getTokenProps }) => (
+            <pre
+              className={cn(
+                'm-0 !bg-neutral-900 p-4 dark:!bg-background',
+                className,
+              )}
+              style={style}
+            >
+              {title && (
+                <p className="font-code mb-4 text-sm text-muted-foreground">
+                  {title}
+                </p>
+              )}
+              {tokens.map((line, i) => (
+                <div key={`line${i}`} {...getLineProps({ line })}>
+                  {line.map((token, key) => (
+                    <span key={key} {...getTokenProps({ token })} />
+                  ))}
+                </div>
               ))}
-            </div>
-          ))}
-        </pre>
-      )}
-    </Highlight>
+            </pre>
+          )}
+        </Highlight>
+      </ScrollArea>
+    </div>
   )
 }
