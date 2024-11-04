@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import React from 'react'
 
-const geistSans = localFont({
+const inter = localFont({
   src: '../fonts/Inter-VariableFont_opsz,wght.ttf',
   variable: '--font-inter-sans',
   weight: '100 900',
@@ -27,12 +27,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${sourceCodePro.variable} font-sans antialiased`}
+        className={`${inter.variable} ${sourceCodePro.variable} font-sans antialiased`}
       >
         <div className="flex min-h-screen flex-col">
-          <main className="flex-1">{children}</main>
+          <div className="flex-1">{children}</div>
 
           <footer className="py-2">
             <p className="text-center text-sm text-muted-foreground">
