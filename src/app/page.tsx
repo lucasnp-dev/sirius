@@ -29,10 +29,14 @@ export default function Home() {
           </p>
         </div>
         <div className="flex gap-4">
-          <Button variant="secondary" className="mx-auto block" asChild>
+          <Button variant="secondary" asChild>
             <Link href="/docs/introduction">Get started</Link>
           </Button>
-          <Button>Github</Button>
+          <Button asChild>
+            <Link target="_blank" href="https://github.com/lucasnp-dev/sirius">
+              Github
+            </Link>
+          </Button>
         </div>
         <p className="absolute bottom-2 mx-auto max-w-96 rounded-lg px-4 py-2 font-sourceCodePro text-sm text-foreground">
           {' '}
