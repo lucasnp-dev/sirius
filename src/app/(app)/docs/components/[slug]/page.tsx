@@ -18,6 +18,8 @@ export default function ComponentsPage() {
             </DemoBlock>
           )}
 
+          <div>{app.page.beforeDemo && <app.page.beforeDemo />}</div>
+
           <div className="space-y-16">
             {app.page.installation && (
               <div>

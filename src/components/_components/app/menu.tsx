@@ -25,7 +25,7 @@ export function Menu() {
   const pathname = usePathname()
 
   return (
-    <header className="sticky top-0 z-10 border-b backdrop-blur-sm">
+    <header className="sticky top-0 z-10 backdrop-blur-sm">
       <div className="container mx-auto flex items-center justify-between py-2 max-lg:px-4">
         <Sheet>
           <SheetTrigger asChild>

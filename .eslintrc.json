@@ -53,6 +53,7 @@
       "no-shadow": "off",
       "react/jsx-no-constructed-context-values": "off",
       "react/jsx-no-useless-fragment": "off",
-      "prefer-const": "off"
+      "prefer-const": "off",
+      "no-unused-vars": "off"
     }
 }

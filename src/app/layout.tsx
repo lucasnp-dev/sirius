@@ -15,7 +15,7 @@ const sourceCodePro = localFont({
 })
 
 export const metadata: Metadata = {
-  title: 'Sirius Ui',
+  title: 'Sirius/ui',
   description: 'Library of UI components to build fast.',
 }
 

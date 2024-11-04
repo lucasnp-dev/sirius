@@ -20,19 +20,24 @@ export default function Home() {
           fill="white"
         />
         <div className="relative z-10 mx-auto w-full max-w-7xl p-4 pt-20 md:pt-0">
-          <h1 className="bg-opacity-50 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-center font-sourceCodePro text-4xl font-bold text-transparent md:text-7xl">
+          <h1 className="hidden bg-opacity-50 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-center font-sourceCodePro text-4xl font-bold text-transparent md:text-7xl">
             Sirius/ui
           </h1>
+          <img src="/logo.svg" alt="Logo" width={400} className="mx-auto" />
           <p className="mx-auto mt-4 max-w-lg text-center text-base font-normal text-neutral-300">
             Build fast. That’s the spirit of Sirius. Use the components to build
             a elegance UI and feel free to customize them.
           </p>
         </div>
         <div className="flex gap-4">
-          <Button variant="secondary" className="mx-auto block" asChild>
+          <Button variant="secondary" asChild>
             <Link href="/docs/introduction">Get started</Link>
           </Button>
-          <Button>Github</Button>
+          <Button asChild>
+            <Link target="_blank" href="https://github.com/lucasnp-dev/sirius">
+              Github
+            </Link>
+          </Button>
         </div>
         <p className="absolute bottom-2 mx-auto max-w-96 rounded-lg px-4 py-2 font-sourceCodePro text-sm text-foreground">
           {' '}
@@ -120,7 +125,7 @@ export default function Home() {
         </div>
 
         <div className="relative z-40 mx-auto grid max-w-6xl grid-cols-1 items-start gap-20 md:grid-cols-3 lg:gap-10 xl:grid-cols-3">
-          <a className="group space-y-2" href="/demo">
+          <Link className="group space-y-2" href="/docs/components/multi-step">
             <div className="relative flex items-center justify-center rounded-lg border bg-black p-4 py-8 transition-colors">
               <div
                 aria-hidden
@@ -142,8 +147,8 @@ export default function Home() {
               Guide the user through a step-by-step process. Easily configurable
               and integrable.
             </p>
-          </a>
-          <a className="group space-y-2" href="/demo">
+          </Link>
+          <Link className="group space-y-2" href="/docs/components/motion-tabs">
             <div className="relative flex items-center justify-center rounded-lg border bg-black p-4 py-8 transition-colors">
               <div
                 aria-hidden
@@ -164,8 +169,8 @@ export default function Home() {
             <p className="text-sm text-muted-foreground">
               Tabs that are simple to use and easily customizable.
             </p>
-          </a>
-          <a className="group space-y-2" href="/demo">
+          </Link>
+          <Link className="group space-y-2" href="/docs/components/combobox">
             <div className="relative flex items-center justify-center rounded-lg border bg-black p-4 py-8 transition-colors">
               <div
                 aria-hidden
@@ -176,25 +181,25 @@ export default function Home() {
               />
               <img
                 className="aspect-video h-full w-full rounded-md object-cover blur-0 transition duration-300 group-hover:scale-105"
-                src="/demo.gif"
+                src="/combo1.gif"
                 alt=""
               />
             </div>
             <p className="text-lg font-medium group-hover:underline">
-              Multi Step
+              <span className="text-muted-foreground">(Multi)</span> Combobox
             </p>
             <p className="text-sm text-muted-foreground">
-              Guide the user through a step-by-step process. Easily configurable
-              and integrable.
+              A Combobox component that supports multi-selection with just a
+              single property.
             </p>
-          </a>
+          </Link>
         </div>
 
         <Link
-          href="/components"
+          href="/docs/introduction"
           className="block text-center text-sm text-muted-foreground underline"
         >
-          <span>See all</span>
+          <span>See more</span>
         </Link>
       </div>
 
