@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { Check, ChevronsUpDown, X } from 'lucide-react'
 import * as React from 'react'
 import useMeasure from 'react-use-measure'
@@ -199,50 +199,54 @@ const ComboboxTrigger = React.forwardRef<
   return (
     <div className="relative pt-2" ref={refTrigger}>
       <div className="px-2">
-        <motion.div
-          className={cn(
-            'flex w-fit flex-wrap items-center rounded-t-md border border-b-0 bg-background py-2',
-            multiple && Array.isArray(currentValue) && currentValue.length > 0
-              ? 'gap-2 px-2'
-              : 'hidden',
-          )}
-        >
+        <AnimatePresence mode="wait">
           {multiple &&
-            currentValue &&
-            currentValue.length > 0 &&
             Array.isArray(currentValue) &&
-            currentValue.map((val) => (
-              <motion.span
-                exit={{ opacity: 0, scale: 0.5 }}
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                  transition: {
-                    duration: 0.15,
-                    ease: 'easeIn',
-                    type: 'spring',
-                    bounce: 0.1,
-                  },
-                }}
-                key={`${val}-open`}
-                className="group flex cursor-default items-center gap-2 whitespace-nowrap rounded-lg bg-muted p-1 text-xs text-muted-foreground transition-colors hover:text-foreground"
+            currentValue.length > 0 && (
+              <motion.div
+                className={cn(
+                  'gap-2 px-2 flex w-fit flex-wrap items-center rounded-t-md border border-b-0 bg-background py-2'
+                )}
               >
-                {items.find((item) => item.value === val)?.label}
-                <button
-                  className="text-muted-foreground transition-colors hover:text-foreground"
-                  type="button"
-                >
-                  <X
-                    size={16}
-                    onClick={() =>
-                      setCurrentValue(currentValue.filter((v) => v !== val))
-                    }
-                  />
-                </button>
-              </motion.span>
-            ))}
-        </motion.div>
+                {multiple &&
+                  currentValue &&
+                  currentValue.length > 0 &&
+                  Array.isArray(currentValue) &&
+                  currentValue.map((val) => (
+                    <motion.span
+                      initial={{ opacity: 0, scale: 0.5 }}
+                      animate={{
+                        opacity: 1,
+                        scale: 1,
+                        transition: {
+                          duration: 0.15,
+                          ease: 'easeIn',
+                          type: 'spring',
+                          bounce: 0.1,
+                        },
+                      }}
+                      key={val}
+                      className="group flex cursor-default items-center gap-2 whitespace-nowrap rounded-lg bg-muted p-1 text-xs text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      {items.find((item) => item.value === val)?.label}
+                      <button
+                        className="text-muted-foreground transition-colors hover:text-foreground"
+                        type="button"
+                      >
+                        <X
+                          size={16}
+                          onClick={() =>
+                            setCurrentValue(
+                              currentValue.filter((v) => v !== val),
+                            )
+                          }
+                        />
+                      </button>
+                    </motion.span>
+                  ))}
+              </motion.div>
+            )}
+        </AnimatePresence>
       </div>
 
       <PopoverTrigger asChild>
