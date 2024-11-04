@@ -20,9 +20,10 @@ export default function Home() {
           fill="white"
         />
         <div className="relative z-10 mx-auto w-full max-w-7xl p-4 pt-20 md:pt-0">
-          <h1 className="bg-opacity-50 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-center font-sourceCodePro text-4xl font-bold text-transparent md:text-7xl">
+          <h1 className="hidden bg-opacity-50 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-center font-sourceCodePro text-4xl font-bold text-transparent md:text-7xl">
             Sirius/ui
           </h1>
+          <img src="/logo.svg" alt="Logo" width={400} className="mx-auto" />
           <p className="mx-auto mt-4 max-w-lg text-center text-base font-normal text-neutral-300">
             Build fast. That’s the spirit of Sirius. Use the components to build
             a elegance UI and feel free to customize them.
