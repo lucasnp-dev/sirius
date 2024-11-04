@@ -51,6 +51,7 @@
       "react/no-array-index-key": "off",
       "import/no-anonymous-default-export": "off",
       "no-shadow": "off",
-      "react/jsx-no-constructed-context-values": "off"
+      "react/jsx-no-constructed-context-values": "off",
+      "react/jsx-no-useless-fragment": "off"
     }
 }
