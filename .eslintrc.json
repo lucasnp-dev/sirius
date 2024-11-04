@@ -49,6 +49,8 @@
       "eslint-plugin-import/no-extraneous-dependencies": "off",
       "import/no-extraneous-dependencies": "off",
       "react/no-array-index-key": "off",
-      "import/no-anonymous-default-export": "off"
+      "import/no-anonymous-default-export": "off",
+      "no-shadow": "off",
+      "react/jsx-no-constructed-context-values": "off"
     }
 }
