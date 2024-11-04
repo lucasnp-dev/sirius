@@ -31,7 +31,7 @@ export function MultiComboboxExample() {
           <ComboboxItem value="3" label="Item 3" />
           <ComboboxItem value="4" label="Item 4" />
           <ComboboxItem value="5" label="Item 5" />
-          <ComboboxItem value="5" label="Item 6" />
+          <ComboboxItem value="6" label="Item 6" />
         </ComboboxList>
       </ComboboxContent>
     </Combobox>

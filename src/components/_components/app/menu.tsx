@@ -76,7 +76,7 @@ export function Menu() {
         </Sheet>
         <Logo />
         <div className="flex items-center gap-2">
-          <Button
+          {/* <Button
             size="sm"
             onClick={() => setOpen(true)}
             variant="outline"
@@ -87,7 +87,7 @@ export function Menu() {
             <CommandShortcut className="flex items-center gap-1 rounded border border-border p-1 text-xs">
               <Command size={12} /> <kbd>K</kbd>
             </CommandShortcut>
-          </Button>
+          </Button> */}
           <ModeToggle />
         </div>
       </div>
