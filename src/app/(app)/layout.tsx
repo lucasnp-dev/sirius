@@ -12,7 +12,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
     <Providers>
       <div className="flex min-h-screen flex-col">
         <Menu />
-        <main className="flex-1max-lg:px-4 container relative lg:grid lg:grid-cols-12">
+        <main className="flex-1max-lg:px-4 container relative lg:grid lg:grid-cols-12 mx-auto">
           <aside className="max-lg:hidden lg:sticky lg:top-14 lg:col-span-3 lg:max-h-screen">
             <Sidebar />
           </aside>
