@@ -17,6 +17,7 @@ import {
   SheetTrigger,
 } from '../../ui/sheet'
 import { CommandMenu } from './command-menu'
+import { Logo } from './logo'
 import { ModeToggle } from './mode-toggle'
 
 export function Menu() {
@@ -25,7 +26,7 @@ export function Menu() {
 
   return (
     <header className="sticky top-0 z-10 border-b backdrop-blur-sm">
-      <div className="container mx-auto flex items-center justify-between px-4 py-4">
+      <div className="container mx-auto flex items-center justify-between py-2 max-lg:px-4">
         <Sheet>
           <SheetTrigger asChild>
             <Button className="lg:hidden" variant="ghost">
@@ -73,21 +74,22 @@ export function Menu() {
             </SheetHeader>
           </SheetContent>
         </Sheet>
-        <Link href="/">
-          <img src="/logo.svg" alt="Logo" width={180} />
-        </Link>
-        <Button
-          onClick={() => setOpen(true)}
-          variant="outline"
-          className="w-72 items-center gap-2 text-muted-foreground"
-        >
-          <Search size={16} />
-          Search{' '}
-          <CommandShortcut className="flex items-center gap-1 rounded border border-border p-1 text-xs">
-            <Command size={12} /> <kbd>K</kbd>
-          </CommandShortcut>
-        </Button>
-        <ModeToggle />
+        <Logo />
+        <div className="flex items-center gap-2">
+          <Button
+            size="sm"
+            onClick={() => setOpen(true)}
+            variant="outline"
+            className="w-72 items-center gap-2 pr-2 text-muted-foreground"
+          >
+            <Search size={16} />
+            Search in docs{' '}
+            <CommandShortcut className="flex items-center gap-1 rounded border border-border p-1 text-xs">
+              <Command size={12} /> <kbd>K</kbd>
+            </CommandShortcut>
+          </Button>
+          <ModeToggle />
+        </div>
       </div>
 
       <CommandMenu open={open} onOpenChange={setOpen} />

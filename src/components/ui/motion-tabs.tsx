@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // radix-ui/tabs: https://www.radix-ui.com/primitives/docs/components/tabs
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 import { motion } from 'framer-motion'

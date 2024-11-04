@@ -16,7 +16,7 @@ import {
   MotionTabsTrigger,
 } from '@/components/ui/motion-tabs'
 
-export function TabsExample() {
+export function MotionTabsExample() {
   return (
     <MotionsTabs defaultValue="account">
       <MotionTabsList className="w-full">
