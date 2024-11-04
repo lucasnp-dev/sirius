@@ -30,7 +30,7 @@ export default function Home() {
         </div>
         <div className="flex gap-4">
           <Button variant="secondary" className="mx-auto block" asChild>
-            <Link href="/docs/getting-started/introduction">Get started</Link>
+            <Link href="/docs/introduction">Get started</Link>
           </Button>
           <Button>Github</Button>
         </div>
